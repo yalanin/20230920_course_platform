@@ -5,4 +5,5 @@ class Course < ApplicationRecord
 
   # table relation
   belongs_to :teacher
+  has_many :chapters
 end
