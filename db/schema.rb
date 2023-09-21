@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_21_010242) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_21_025316) do
   create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "username", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,6 +44,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_010242) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "units", charset: "utf8", force: :cascade do |t|
+    t.bigint "chapter_id"
+    t.string "name", null: false
+    t.string "description"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_units_on_chapter_id"
   end
 
 end
