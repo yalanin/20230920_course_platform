@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  helper CoursesHelper
+
   def index
   end
 

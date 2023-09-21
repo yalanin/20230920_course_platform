@@ -1,0 +1,8 @@
+<%= f.fields_for :chapters do |c| %>
+  <h5>新增章節</h5>
+  <div class="form-group">
+    <%= c.label :name %>
+    <%= c.text_field :name %>
+  </div>
+  <%= render 'unit_form', c: c %>
+<% end %>

@@ -1,32 +1,14 @@
 <%= form_for @course do |f| %>
+  <h5>新增課程</h5>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="form-group">
     <%= f.label :teacher_id %>
-    <%= f.select :teacher_id, [['test', 1], ['test2', 2]] %>
+    <%= f.select :teacher_id, options_for_teachers %>
   </div>
-  <%= f.fields_for :chapters do |c| %>
-    <div class="form-group">
-      <%= c.label :name %>
-      <%= c.text_field :name %>
-    </div>
-    <%= c.fields_for :units do |u| %>
-      <div class="form-group">
-        <%= u.label :name %>
-        <%= u.text_field :name %>
-      </div>
-      <div class="form-group">
-        <%= u.label :description %>
-        <%= u.text_field :description %>
-      </div>
-      <div class="form-group">
-        <%= u.label :content %>
-        <%= u.text_area :content %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render 'chapter_form', f: f %>
   <div class="form-group">
     <%= f.submit "Create", class: "btn btn-primary" %>
   </div>

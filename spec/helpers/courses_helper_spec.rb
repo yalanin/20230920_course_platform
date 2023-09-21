@@ -11,5 +11,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CoursesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#options_for_teachers' do
+    it 'should return a option array' do
+      result = helper.options_for_teachers
+      expect(result).to be_a Array
+    end
+  end
 end

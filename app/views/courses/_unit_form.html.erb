@@ -1,0 +1,15 @@
+<%= c.fields_for :units do |u| %>
+  <h5>新增單元</h5>
+  <div class="form-group">
+    <%= u.label :name %>
+    <%= u.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= u.label :description %>
+    <%= u.text_field :description %>
+  </div>
+  <div class="form-group">
+    <%= u.label :content %>
+    <%= u.text_area :content %>
+  </div>
+<% end %>
