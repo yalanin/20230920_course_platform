@@ -1,0 +1,33 @@
+<%= form_for @course do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :teacher_id %>
+    <%= f.select :teacher_id, [['test', 1], ['test2', 2]] %>
+  </div>
+  <%= f.fields_for :chapters do |c| %>
+    <div class="form-group">
+      <%= c.label :name %>
+      <%= c.text_field :name %>
+    </div>
+    <%= c.fields_for :units do |u| %>
+      <div class="form-group">
+        <%= u.label :name %>
+        <%= u.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= u.label :description %>
+        <%= u.text_field :description %>
+      </div>
+      <div class="form-group">
+        <%= u.label :content %>
+        <%= u.text_area :content %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit "Create", class: "btn btn-primary" %>
+  </div>
+<% end %>

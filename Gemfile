@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 
+gem 'nested_form_fields', '~> 0.8.4'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
