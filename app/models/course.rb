@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
+  # friendly id
+  extend FriendlyId
+  friendly_id :name, use: :slugged, slug_column: :name
+
   # validation
   validates :name, presence: true
   validates_associated :teacher

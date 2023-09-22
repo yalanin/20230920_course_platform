@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   helper CoursesHelper
+  before_action :set_course, only: [:edit, :update]
 
   def index
     @courses = Course.all
@@ -25,9 +26,24 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit;end
+
+  def update
+    if @course.update(course_params)
+      redirect_to courses_path, notice: '更新成功'
+    else
+      flash[:error] = @course.errors.full_messages
+      redirect_to edit_course_path(@course)
+    end
+  end
+
   private
 
+  def set_course
+    @course = Course.friendly.find(params[:id])
+  end
+
   def course_params
-    params.require(:course).permit(:name, :teacher_id, { chapters_attributes: [:name, :position , units_attributes: [:name, :content, :position]] })
+    params.require(:course).permit(:name, :teacher_id, { chapters_attributes: [:id, :name, :position , units_attributes: [:id, :name, :content, :position]] })
   end
 end

@@ -50,4 +50,17 @@ RSpec.describe CoursesController, type: :controller do
       expect(assigns(:courses).map(&:class).uniq[0]).to be Course
     end
   end
+
+  describe '#update' do
+    it 'should update course success' do
+      patch :update, params: { id: course1.id, course: { name: "update" } }
+      expect(flash[:notice]).to eq('更新成功')
+      expect(response).to redirect_to("/courses")
+    end
+
+    it 'should not update course' do
+      patch :update, params: { id: course1.id, course: { name: "" } }
+      expect(flash[:error]).not_to be_empty
+    end
+  end
 end

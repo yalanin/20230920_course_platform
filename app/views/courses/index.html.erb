@@ -16,10 +16,10 @@
     <% @courses.each do |course|  %>
       <tr>
         <td><%= link_to course.name, '#' %></td>
-        <td><%= link_to('細節', course_chapters_path(course, format: :js), method: :get, remote: true) %></td>
-        <td><%= link_to('細節', course_units_path(course, format: :js), method: :get, remote: true) %></td>
+        <td><%= link_to('細節', '#') %></td>
+        <td><%= link_to('細節', '#') %></td>
         <td>
-          <%= link_to "編輯", '#', class: 'button is-light is-small' %>
+          <%= link_to "編輯", edit_course_path(course), class: 'button is-light is-small' %>
           <%= link_to "刪除", '#', method: :delete, data: { confirm: '確認刪除?!' }, class: 'button is-danger is-small' %>
         </td>
       </tr>

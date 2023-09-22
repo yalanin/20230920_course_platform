@@ -48,6 +48,8 @@ gem 'nested_form_fields', '~> 0.8.4'
 
 gem 'bulma-rails', '~> 0.9.4'
 
+gem 'friendly_id', '~> 5.5'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
