@@ -39,4 +39,15 @@ RSpec.describe CoursesController, type: :controller do
       expect(response).to redirect_to('/courses/new')
     end
   end
+
+  describe '#index' do
+    let!(:course2) { create(:course) }
+    let!(:course3) { create(:course) }
+
+    it 'should return all courses' do
+      get :index
+      expect(assigns(:courses).map(&:class).uniq.size).to eq(1)
+      expect(assigns(:courses).map(&:class).uniq[0]).to be Course
+    end
+  end
 end

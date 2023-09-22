@@ -13,6 +13,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
+      <%= link_to "登出", destroy_admin_session_path, method: :delete, class: 'navbar-item' %>
       <%= link_to '課程列表', courses_path, class: 'navbar-item' %>
     </div>
   </div>

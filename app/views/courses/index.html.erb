@@ -1,1 +1,28 @@
-<%= link_to '新增課程', new_course_path %>
+<br />
+<%= link_to '新增課程', new_course_path, class: 'button is-light is-small' %>
+<br />
+<br />
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>課程名稱</th>
+      <th>章節內容</th>
+      <th>單元內容</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course|  %>
+      <tr>
+        <td><%= link_to course.name, '#' %></td>
+        <td><%= link_to('細節', course_chapters_path(course, format: :js), method: :get, remote: true) %></td>
+        <td><%= link_to('細節', course_units_path(course, format: :js), method: :get, remote: true) %></td>
+        <td>
+          <%= link_to "編輯", '#', class: 'button is-light is-small' %>
+          <%= link_to "刪除", '#', method: :delete, data: { confirm: '確認刪除?!' }, class: 'button is-danger is-small' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

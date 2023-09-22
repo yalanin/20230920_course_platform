@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   helper CoursesHelper
 
   def index
+    @courses = Course.all
   end
 
   def new
