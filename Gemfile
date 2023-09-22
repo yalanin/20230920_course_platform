@@ -50,6 +50,8 @@ gem 'bulma-rails', '~> 0.9.4'
 
 gem 'friendly_id', '~> 5.5'
 
+gem 'paranoia', '~> 2.6', '>= 2.6.2'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

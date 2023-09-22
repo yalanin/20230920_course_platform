@@ -20,7 +20,7 @@
         <td><%= link_to('細節', '#') %></td>
         <td>
           <%= link_to "編輯", edit_course_path(course), class: 'button is-light is-small' %>
-          <%= link_to "刪除", '#', method: :delete, data: { confirm: '確認刪除?!' }, class: 'button is-danger is-small' %>
+          <%= link_to "刪除", course_path(course), data: { turbo_method: :delete }, class: 'button is-danger is-small' %>
         </td>
       </tr>
     <% end %>

@@ -1,4 +1,7 @@
 class Chapter < ApplicationRecord
+  # paranoid
+  acts_as_paranoid
+
   # validation
   validates :name, :position, presence: true
   validates_associated :course

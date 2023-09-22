@@ -63,4 +63,12 @@ RSpec.describe CoursesController, type: :controller do
       expect(flash[:error]).not_to be_empty
     end
   end
+
+  describe '#destroy' do
+    it 'should destroy vendor success' do
+      delete :destroy, params: { id: course1.id }
+      expect(flash[:notice]).to eq('資料已刪除')
+      expect(response).to redirect_to('/courses')
+    end
+  end
 end

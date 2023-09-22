@@ -1,4 +1,7 @@
 class Unit < ApplicationRecord
+  # paranoid
+  acts_as_paranoid
+
   # validation
   validates :name, :content, :position, presence: true
   validates_associated :chapter

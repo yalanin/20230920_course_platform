@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   helper CoursesHelper
-  before_action :set_course, only: [:edit, :update, :show]
+  before_action :set_course, only: [:edit, :update, :show, :destroy]
 
   def index
     @courses = Course.all
@@ -38,6 +38,11 @@ class CoursesController < ApplicationController
   end
 
   def show;end
+
+  def destroy
+    @course.destroy
+    redirect_to courses_path, notice: '資料已刪除'
+  end
 
   private
 

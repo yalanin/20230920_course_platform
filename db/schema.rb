@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_131431) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_22_143004) do
   create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "username", null: false
     t.string "encrypted_password", default: "", null: false
@@ -29,7 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_131431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 1, null: false, unsigned: true
+    t.datetime "deleted_at"
     t.index ["course_id"], name: "index_chapters_on_course_id"
+    t.index ["deleted_at"], name: "index_chapters_on_deleted_at"
   end
 
   create_table "courses", charset: "utf8", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_131431) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_courses_on_deleted_at"
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
@@ -66,7 +70,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_131431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 1, null: false, unsigned: true
+    t.datetime "deleted_at"
     t.index ["chapter_id"], name: "index_units_on_chapter_id"
+    t.index ["deleted_at"], name: "index_units_on_deleted_at"
   end
 
 end

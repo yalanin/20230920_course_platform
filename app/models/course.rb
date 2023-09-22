@@ -2,6 +2,8 @@ class Course < ApplicationRecord
   # friendly id
   extend FriendlyId
   friendly_id :name, use: :slugged, slug_column: :name
+  # paranoid
+  acts_as_paranoid
 
   # validation
   validates :name, presence: true
