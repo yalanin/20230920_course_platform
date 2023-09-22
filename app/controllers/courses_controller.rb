@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to courses_path, notice: '新增成功'
     else
-      flash[:alert] = @course.errors.full_messages
+      flash[:error] = @course.errors.full_messages
       flash[:params] = course_params.to_h
       redirect_to new_course_path
     end
@@ -27,6 +27,6 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :teacher_id, { chapters_attributes: [:name, units_attributes: [:name, :content]] })
+    params.require(:course).permit(:name, :teacher_id, { chapters_attributes: [:name, :position , units_attributes: [:name, :content, :position]] })
   end
 end

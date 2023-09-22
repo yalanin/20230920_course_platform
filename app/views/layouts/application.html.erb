@@ -13,6 +13,8 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/flash' if flash %>
-    <%= yield %>
+    <section class='container'>
+      <%= yield %>
+    </section>
   </body>
 </html>

@@ -35,7 +35,7 @@ RSpec.describe CoursesController, type: :controller do
 
     it 'should create new course failed' do
       get :create, params: {"course"=>{"name"=> "", "teacher_id"=> course1.teacher.id, "chapters_attributes"=>{"0"=>{"name"=> course1.chapters[0].name, "units_attributes"=>{"0"=>{"name"=> course1.units[0].name}}}}}}
-      expect(flash[:alert]).not_to be_empty
+      expect(flash[:error]).not_to be_empty
       expect(response).to redirect_to('/courses/new')
     end
   end

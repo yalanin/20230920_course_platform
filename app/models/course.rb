@@ -9,6 +9,6 @@ class Course < ApplicationRecord
   has_many :units, through: :chapters
 
   # nested form
-  accepts_nested_attributes_for :chapters, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :chapters, allow_destroy: true, reject_if: lambda { |attributes| attributes['name'].blank? && attributes['position'].blank? }
   accepts_nested_attributes_for :units, allow_destroy: true, reject_if: :all_blank
 end

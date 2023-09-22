@@ -1,7 +1,9 @@
 class Chapter < ApplicationRecord
   # validation
-  validates :name, presence: true
+  validates :name, :position, presence: true
   validates_associated :course
+  validates :position, numericality: { only_integer: true, greater_than: 0 }
+  validates :position, uniqueness: { scope: :course_id }
 
   # table relation
   belongs_to :course

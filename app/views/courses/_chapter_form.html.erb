@@ -1,8 +1,16 @@
 <%= f.fields_for :chapters do |c| %>
-  <h5>新增章節</h5>
-  <div class="form-group">
-    <%= c.label :name %>
-    <%= c.text_field :name %>
+  <div class="columns">
+    <div class="column is-half">
+      <%= c.label :name, '章節名稱',class: 'label' %>
+      <%= c.text_field :name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-half">
+      <%= c.label :position, '章節位置',class: 'label' %>
+      <%= c.text_field :position, class: 'input' %>
+    </div>
   </div>
   <%= render 'unit_form', c: c %>
 <% end %>

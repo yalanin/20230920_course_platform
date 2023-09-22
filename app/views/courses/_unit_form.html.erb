@@ -1,15 +1,29 @@
 <%= c.fields_for :units do |u| %>
-  <h5>新增單元</h5>
-  <div class="form-group">
-    <%= u.label :name %>
-    <%= u.text_field :name %>
+  <div class="columns">
+    <div class="column is-half">
+      <%= u.label :name, '單元名稱', class: 'label' %>
+      <%= u.text_field :name, class: 'input' %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= u.label :description %>
-    <%= u.text_field :description %>
+
+  <div class="columns">
+    <div class="column is-half">
+      <%= u.label :description, '單元描述', class: 'label' %>
+      <%= u.text_field :description, class: 'input' %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= u.label :content %>
-    <%= u.text_area :content %>
+
+  <div class="columns">
+    <div class="column is-half">
+      <%= u.label :content, '單元內容', class: 'label' %>
+      <%= u.text_area :content, class: "textarea" %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-half">
+      <%= c.label :position, '單元位置',class: 'label' %>
+      <%= c.text_field :position, class: 'input' %>
+    </div>
   </div>
 <% end %>

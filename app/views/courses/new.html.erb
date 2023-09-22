@@ -1,15 +1,21 @@
+<br />
+<h5 class="title is-5">新增課程</h5>
 <%= form_for @course do |f| %>
-  <h5>新增課程</h5>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="columns">
+    <div class="column is-half">
+      <%= f.label :name, '名稱', class: 'label' %>
+      <%= f.text_field :name, class: 'input' %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :teacher_id %>
-    <%= f.select :teacher_id, options_for_teachers %>
+
+  <div class="columns">
+    <div class="column is-half">
+      <%= f.label :teacher_id, '教師', class: 'label' %>
+      <div class="select is-medium is-fullwidth">
+        <%= f.select :teacher_id, options_for_teachers %>
+      </div>
+    </div>
   </div>
   <%= render 'chapter_form', f: f %>
-  <div class="form-group">
-    <%= f.submit "Create", class: "btn btn-primary" %>
-  </div>
+  <%= f.submit "新增", class: 'button is-primary is-medium mt-4' %>
 <% end %>
