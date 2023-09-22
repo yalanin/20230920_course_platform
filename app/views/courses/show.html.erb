@@ -1,0 +1,34 @@
+<br />
+<h5 class="title is-5"><%= @course.name %></h5>
+<div class="columns">
+  <div class="column is-half">
+    <p class="title is-6">教師</p>
+    <%= @course.teacher.name %>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-half">
+    <p class="title is-6">課程描述</p>
+    <%= @course.description %>
+  </div>
+</div>
+<% if @course.chapters.any? %>
+  <% @course.chapters.each do |chapter| %>
+    <div class="columns">
+      <div class="column is-half">
+        <p class="title is-6">章節</p>
+        <%= chapter.name %>
+      </div>
+    </div>
+    <% if chapter.units.any? %>
+      <% chapter.units.each do |unit| %>
+        <div class="columns">
+          <div class="column is-half">
+            <p class="title is-6">單元</p>
+            <%= unit.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

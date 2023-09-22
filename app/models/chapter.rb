@@ -11,4 +11,7 @@ class Chapter < ApplicationRecord
 
   # nested form
   accepts_nested_attributes_for :units, allow_destroy: true, reject_if: :all_blank
+
+  # scope
+  default_scope { order(position: :asc) }
 end

@@ -7,4 +7,7 @@ class Unit < ApplicationRecord
 
   # table relation
   belongs_to :chapter
+
+  # scope
+  default_scope { order(position: :asc) }
 end

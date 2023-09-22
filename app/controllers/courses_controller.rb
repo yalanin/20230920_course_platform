@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   helper CoursesHelper
-  before_action :set_course, only: [:edit, :update]
+  before_action :set_course, only: [:edit, :update, :show]
 
   def index
     @courses = Course.all
@@ -36,6 +36,8 @@ class CoursesController < ApplicationController
       redirect_to edit_course_path(@course)
     end
   end
+
+  def show;end
 
   private
 
