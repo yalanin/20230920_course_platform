@@ -71,4 +71,13 @@ RSpec.describe CoursesController, type: :controller do
       expect(response).to redirect_to('/courses')
     end
   end
+
+  describe '#details' do
+    it 'should return a json with array data' do
+      get :details, params: { course_id: course1.id }
+      res = JSON.parse(response.body)
+      data = course1.chapters.map(&:name) + course1.units.map(&:name)
+      expect(res['res'].flatten).to eq(data)
+    end
+  end
 end

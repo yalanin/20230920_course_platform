@@ -44,6 +44,13 @@ class CoursesController < ApplicationController
     redirect_to courses_path, notice: '資料已刪除'
   end
 
+  def details
+    course = Course.friendly.find(params[:course_id])
+    result = []
+    course.chapters.includes(:units).each { |chapter| result << [chapter.name, chapter.units.map(&:name)] }
+    render json: { res: result }
+  end
+
   private
 
   def set_course

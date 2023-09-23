@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "courses#index"
 
-  resources :courses
+  resources :courses do
+    get :details
+  end
 end

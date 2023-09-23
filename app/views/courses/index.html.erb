@@ -3,26 +3,39 @@
 <br />
 <br />
 
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>課程名稱</th>
-      <th>章節內容</th>
-      <th>單元內容</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @courses.each do |course|  %>
+<div id="app" data-controller="popup">
+  <table class="table is-fullwidth">
+    <thead>
       <tr>
-        <td><%= link_to course.name, course_path(course) %></td>
-        <td><%= link_to('細節', '#') %></td>
-        <td><%= link_to('細節', '#') %></td>
-        <td>
-          <%= link_to "編輯", edit_course_path(course), class: 'button is-light is-small' %>
-          <%= link_to "刪除", course_path(course), data: { turbo_method: :delete }, class: 'button is-danger is-small' %>
-        </td>
+        <th class="is-hidden"></th>
+        <th>課程名稱</th>
+        <th>內容</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @courses.each do |course|  %>
+        <tr>
+          <td class="is-hidden"><%= course.id %></td>
+          <td><%= link_to course.name, course_path(course) %></td>
+          <td><%= link_to('細節', '#', data: { action: 'popup#trigger', cid: course.id }) %></td>
+          <td>
+            <%= link_to "編輯", edit_course_path(course), class: 'button is-light is-small' %>
+            <%= link_to "刪除", course_path(course), data: { turbo_method: :delete }, class: 'button is-danger is-small' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="modal" data-popup-target="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <section class="modal-card-body" data-popup-target="content">
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" data-action="popup#close">關閉</button>
+      </footer>
+    </div>
+  </div>
+</div>
