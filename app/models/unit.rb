@@ -6,7 +6,7 @@ class Unit < ApplicationRecord
   validates :name, :content, :position, presence: true
   validates_associated :chapter
   validates :position, numericality: { only_integer: true, greater_than: 0 }
-  validates :position, uniqueness: { scope: :chapter_id }
+  validates :position, uniqueness: { scope: :chapter_id }, on: :create
 
   # table relation
   belongs_to :chapter

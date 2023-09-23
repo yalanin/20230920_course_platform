@@ -1,4 +1,4 @@
-<%= f.fields_for :chapters do |c| %>
+<div class="nested-chapter-fields mt-3">
   <div class="columns">
     <div class="column is-half">
       <%= c.label :name, '章節名稱',class: 'label' %>
@@ -12,5 +12,26 @@
       <%= c.text_field :position, class: 'input' %>
     </div>
   </div>
-  <%= render 'unit_form', c: c %>
-<% end %>
+
+  <div data-controller="course">
+    <template data-course-target="unit_template">
+      <%= c.fields_for :units, child_index: 'NEW_RECORD' do |u| %>
+        <%= render 'unit_form', u: u %>
+      <% end %>
+    </template>
+
+    <%= c.fields_for :units do |u| %>
+      <%= render 'unit_form', u: u %>
+    <% end %>
+
+    <% if action_name == 'new' %>
+      <div data-course-target="unit_link">
+        <%= link_to '新增單元', '#', class: 'button is-light is-small', data: { action: 'course#add_unit' } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field mt-3">
+    <%= link_to "刪除章節", '#', class: 'button is-danger is-small', data: { action: 'chapter#remove_chapter' } %>
+  </div>
+</div>

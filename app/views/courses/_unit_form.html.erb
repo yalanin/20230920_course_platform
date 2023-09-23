@@ -1,4 +1,4 @@
-<%= c.fields_for :units do |u| %>
+<div class="nested-unit-fields mb-3">
   <div class="columns">
     <div class="column is-half">
       <%= u.label :name, '單元名稱', class: 'label' %>
@@ -22,8 +22,13 @@
 
   <div class="columns">
     <div class="column is-half">
-      <%= c.label :position, '單元位置',class: 'label' %>
-      <%= c.text_field :position, class: 'input' %>
+      <%= u.label :position, '單元位置',class: 'label' %>
+      <%= u.text_field :position, class: 'input' %>
     </div>
   </div>
-<% end %>
+
+
+  <div class="field">
+    <%= link_to "刪除單元", '#', class: 'button is-danger is-small', data: { action: 'course#remove_unit' } %>
+  </div>
+</div>

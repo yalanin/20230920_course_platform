@@ -6,7 +6,7 @@ class Chapter < ApplicationRecord
   validates :name, :position, presence: true
   validates_associated :course
   validates :position, numericality: { only_integer: true, greater_than: 0 }
-  validates :position, uniqueness: { scope: :course_id }
+  validates :position, uniqueness: { scope: :course_id }, on: :create
 
   # table relation
   belongs_to :course
