@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <% if controller_name != 'sessions' %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
     <%= render 'layouts/flash' if flash %>
     <section class='container'>
       <%= yield %>
